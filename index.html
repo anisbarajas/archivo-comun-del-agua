@@ -242,7 +242,8 @@ footer a{color:var(--bar-fg)}
   body::before{background:var(--bar)}
   .top{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:30;border-bottom:0;border-top:3px solid var(--accent);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -6px 18px rgba(0,0,0,.18)}
   .top .wrap{padding-block:10px}
-  .top .brand{display:none}
+  .top .brand{display:flex;flex:none}
+  .top .brand>span{display:none}
   .top .search input{padding-block:11px;font-size:16px}
   .top .filt-btn{padding:10px 16px;font-weight:700}
   body{padding-bottom:calc(var(--barh) + env(safe-area-inset-bottom,0px))}
@@ -259,7 +260,6 @@ footer a{color:var(--bar-fg)}
 <body>
 
 
-<div class="mbrand wrap" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 28 28"><path d="M14 3c4 5.5 7 9.3 7 13a7 7 0 0 1-14 0c0-3.7 3-7.5 7-13z" fill="var(--accent)"/></svg><span>Archivo Común del Agua</span></div>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#" aria-label="Inicio">
@@ -546,7 +546,7 @@ document.getElementById("filters").addEventListener("input",e=>{ const k=e.targe
 document.getElementById("filters").addEventListener("keydown",e=>{ const k=e.target.dataset&&e.target.dataset.fs; if(k&&e.key==="Escape"){ e.stopPropagation(); state.srchOpen.delete(k); state.srch[k]=""; renderFilters(); const b=document.querySelector(`[data-srch="${k}"]`); if(b) b.focus(); } });
 document.getElementById("sort").addEventListener("change",e=>{ state.sort=e.target.value; renderGrid(); });
 window.addEventListener("hashchange",fromHash);
-document.getElementById("modeNote").innerHTML = EMBED ? "Los documentos y videos se muestran desde sus plataformas de origen (Google Drive, repositorio UDG, Facebook, medios)." : (PUBLIC_URL?`Versión con visor integrado: <a href="${PUBLIC_URL}" target="_blank" rel="noopener">${PUBLIC_URL.replace(/^https:\/\//,"")}</a>`:"");
+document.getElementById("modeNote").textContent = "Los documentos y videos se muestran desde sus plataformas de origen (Google Drive, repositorio UDG, Facebook, medios).";
 renderStats(); render(); fromHash();
 </script>
 
