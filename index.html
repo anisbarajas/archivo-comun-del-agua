@@ -362,7 +362,7 @@ function card(r){
   const n = parseInt(r.id.replace(/\D/g,""),10)||1, h=headOf(r);
   const colTag = r.fuente_col.includes("ahogado") ? "El Ahogado" : COLS[r.fuente_col[0]];
   return `<button class="card" style="--cc:${col(r.eje)}" data-id="${esc(r.id)}" aria-label="${esc(h)}">
-    <div class="thumb">${waves(n)}${thumbImg(r)}<span class="coll">${esc(colTag)}</span><span class="rid">${esc(shortId(r))}</span><span class="kind">${icon(r.recurso)}${esc(r.recurso==="Sin documento enlazado"?"Sin archivo":r.recurso)}</span></div>
+    <div class="thumb">${waves(n)}${thumbImg(r)}<span class="coll">${esc(colTag)}</span><span class="kind">${icon(r.recurso)}${esc(r.recurso==="Sin documento enlazado"?"Sin archivo":r.recurso)}</span></div>
     <div class="cbody"><div class="ccat">${esc(r.tema)}</div><div class="ctitle ${h.length>70?"long":""}">${esc(h)}</div><div class="csub">${esc(subOf(r))}</div>
     <div class="cmeta"><span>${esc(isCit(r)? (r.medios||[])[0] : r.tipo)}</span><span class="mono">${esc(r.periodo)}</span></div></div></button>`;
 }
@@ -509,7 +509,7 @@ function openRec(id, push=true){
     : `${fact("Colección",colsTxt)}${fact("Tipo de documento",r.tipo,"tipo")}${fact("Autor(es)",r.autores)}${fact("Año",r.year?String(r.year):"",r.year?"dec":null,r.dec)}${fact("Institución",r.medios,"medios")}${fact("Dirección / coordinación",r.direccion)}${fact("Grado",r.grado)}${fact("Disciplina",r.disciplina)}${fact("Publicación / editorial",r.editorial)}${fact("Lugar de publicación",r.lugar)}${fact("ISBN / ISSN",r.isbn)}${fact("Eje",r.eje,"eje")}${fact("Temática principal",r.tema,"tema")}${fact("Zona de estudio",r.zonas,"zonas")}${fact("Municipios",r.munis,"munis")}`;
   const page=document.getElementById("page");
   page.innerHTML = `<div class="page-head" style="--cc:${col(r.eje)}">${waves(3)}<div class="in">
-      <div class="crumbs"><span>${esc(colsTxt)} · ${esc(shortId(r))}</span><button class="x" id="closeBtn">Cerrar ✕</button></div>
+      <div class="crumbs"><span>${esc(colsTxt)}</span><button class="x" id="closeBtn">Cerrar ✕</button></div>
       <h2 id="dTitle">${esc(headOf(r))}</h2><p>${esc(subOf(r))}</p></div></div>
     <div class="page-body"><div style="min-width:0">${viewer(r)}
       ${cit?"":academicBody(r)}
